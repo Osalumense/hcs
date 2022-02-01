@@ -17,6 +17,6 @@
                 <a class="btn mx-3" href="register.html">Get Started</a>
                 <a class="btn-reverse mx-3" href="#">Why HCS?</a>
             </div>
-        </div> <!-- end of container -->
+        </div>
     </section>
 @endsection

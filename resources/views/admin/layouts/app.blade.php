@@ -89,27 +89,30 @@
             </nav>
             <!-- Sidebar footer -->
             <div class="flex-shrink-0 p-2 border-t max-h-14">
-              <button
-                class="flex items-center justify-center w-full px-4 py-2 space-x-1 font-medium tracking-wider uppercase bg-gray-100 border rounded-md focus:outline-none focus:ring"
-              >
-                <span>
-                  <svg
-                    class="w-6 h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                    />
-                  </svg>
-                </span>
-                <span :class="{'lg:hidden': !isSidebarOpen}"> Logout </span>
-              </button>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                <button
+                    class="flex items-center justify-center w-full px-4 py-2 space-x-1 font-medium tracking-wider uppercase bg-gray-100 border rounded-md focus:outline-none focus:ring"
+                >
+                    <span>
+                    <svg
+                        class="w-6 h-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                        />
+                    </svg>
+                    </span>
+                    <span :class="{'lg:hidden': !isSidebarOpen}"> Logout </span>
+                </button>
+                </form>
             </div>
           </aside>
     
@@ -133,15 +136,6 @@
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
                     </svg>
                   </button>
-                </div>
-    
-                <!-- Mobile search box -->
-                <div
-                  x-show.transition="isSearchBoxOpen"
-                  class="fixed inset-0 z-10 bg-black bg-opacity-20"
-                  style="backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)"
-                >
-                  
                 </div>
     
                 <!-- Navbar right -->
@@ -260,7 +254,10 @@
                         <span class="text-sm text-gray-400">ahmed.kamel@example.com</span>
                       </div>
                       <div class="flex items-center justify-center hover:bg-gray-100 text-red-600 p-2 border-t">
-                        <a href="#" class="block px-2 py-1 transition rounded-md ">Logout</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="px-2 py-1 transition rounded-md" type="submit">Logout</button>
+                        </form>
                       </div>
                     </div>
                   </div>

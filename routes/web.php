@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +21,18 @@ use App\Http\Controllers\PageController;
 // });
 
 Route::get('/', [PageController::class, 'index']);
-Route::get('/login', [PageController::class, 'renderLogin']);
-Route::get('/register', [PageController::class, 'renderRegister']);
+// Route::get('/login', [PageController::class, 'renderLogin']);
+// Route::get('/register', [PageController::class, 'renderRegister']);
 Route::get('/adm', [PageController::class, 'Admex']);
 
 
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => ['admin-auth']], function () {
-        Route::get('/', [PageController::class, 'Adminindex']);
+        Route::get('/', [HomeController::class, 'Adminindex']);
     });
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
