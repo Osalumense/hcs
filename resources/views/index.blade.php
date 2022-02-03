@@ -14,7 +14,7 @@
                 <p>Chat or make a video call with your therapist.</p>  
             </div>
             <div class="my-3 d-flex justify-content-start">
-                <a class="btn mx-3" href="register.html">Get Started</a>
+                <a class="btn mx-3" href="register">Get Started</a>
                 <a class="btn-reverse mx-3" href="#">Why HCS?</a>
             </div>
         </div>

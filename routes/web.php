@@ -21,8 +21,6 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::get('/', [PageController::class, 'index']);
-// Route::get('/login', [PageController::class, 'renderLogin']);
-// Route::get('/register', [PageController::class, 'renderRegister']);
 Route::get('/adm', [PageController::class, 'Admex']);
 
 
@@ -30,6 +28,10 @@ Route::get('/adm', [PageController::class, 'Admex']);
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => ['admin-auth']], function () {
         Route::get('/', [HomeController::class, 'Adminindex']);
+        Route::get('/counsellors/fetch', [HomeController::class, 'displayCounsellors']);
+        Route::get('/counsellors', [HomeController::class, 'renderCounsellorsPage']);
+        Route::get('/users', [HomeController::class, 'renderUsersPage']);
+        
     });
 });
 

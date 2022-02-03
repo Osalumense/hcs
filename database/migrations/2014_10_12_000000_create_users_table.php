@@ -20,9 +20,12 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['10', '20', '30'])->nullable();
             $table->string('email')->unique();
             $table->string('mobile_number', 15)->nullable();
+            $table->string('patient_id', 100);
+            $table->string('staff_id', 100);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('type', ['10', '20', '30']);
+            $table->enum('type', [10, 20, 30]);
+            $table->enum('is_active', [0, 1])->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

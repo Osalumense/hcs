@@ -89,3 +89,58 @@ final class Gender
         ];
     }
 }
+
+/**
+ * Class ActiveStatus
+ */
+final class ActiveStatus
+{
+    const INACTIVE = '0';
+    const ACTIVE = '1';
+
+    /**
+     * Returns respective value.
+     *
+     * @param $x
+     *
+     * @return null
+     */
+    public static function getValue($x)
+    {
+        $value = null;
+        switch ($x) {
+            case '0':
+                $value = 'Inactive';
+                break;
+            case '1':
+                $value = 'Active';
+                break;
+        }
+
+        return $value;
+    }
+
+    public static function getAll()
+    {
+        return [
+            self::INACTIVE => ActiveStatus::getValue(self::INACTIVE),
+            self::ACTIVE => ActiveStatus::getValue(self::ACTIVE),
+        ];
+    }
+
+    public static function getValueInHtml($x)
+    {
+        $value = null;
+        switch ($x) {
+            case '0':
+                $value = '<span class="inline-flex px-2 text-sm font-semibold leading-5 text-red-800 bg-red-100 rounded-full"> Inactive </span>';
+                break;
+            case '1':
+                $value = '<span class="inline-flex px-2 text-sm font-semibold leading-5 text-blue-800 bg-blue-100 rounded-full"> Active </span>';
+                break;
+        }
+
+        return $value;
+    }
+}
+

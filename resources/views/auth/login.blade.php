@@ -5,9 +5,9 @@
     <div class="container-fluid text-light my-5">
         <div class="row d-flex justify-content-center mt-5">
             <div class="col-lg-5 border border-2 mt-3 justify-content-lg-end align-items-center px-lg-5">
-                    <div class="text-center py-4 mt-4 pt-lg-0">
+                    <div class="text-center py-4 mt-3 pt-lg-0">
                         <p>Health Counselling System</p>
-                        <h2 class="pt-5">Welcome Back</h2>
+                        <h2 class="pt-2">Welcome Back</h2>
                     </div>
 
                     <form method="POST" action="{{ route('login') }}">
@@ -50,10 +50,20 @@
                             </div>
                         </div>
 
+                        <div class="my-3">
+                            <div class="d-flex justify-content-center">
+                                <p> Don't have an account yet? </p>
+                                <a class="form-link mx-2" href="{{ url('/register')}}"> Sign up</a>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <a class="form-link my-2" href="{{ url('/password/reset' )}}"> Forgot password?</a>
+                            </div>
+                        </div>
+
                         <div class="my-4">
                             <button type="submit" class="btn mx-auto d-flex justify-content-center form-control-submit-button">
                                 {{ __('Login') }}
-                            </button>
+                            </button>     
                         </div>
                         
                     </form>
@@ -73,9 +83,7 @@
                         
                     </div>
 
-                    <div class="d-flex justify-content-center">
-                        <a class="form-link mb-4" href=""> Forgot password?</a>
-                    </div> --}}
+                    --}}
                     
                 </div> <!-- end of col -->
         </div> <!-- end of row -->

@@ -1,0 +1,1 @@
+const jestConfig={rootDir:"test",bail:!0,clearMocks:!0,collectCoverage:!1,coverageDirectory:"<rootDir>/coverage",moduleNameMapper:{"^@test/(.*)$":"<rootDir>/$1"},testEnvironment:"jsdom",detectOpenHandles:!0};module.exports=jestConfig;

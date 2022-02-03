@@ -20,7 +20,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         if (Auth::guest()) {
-            return view('auth::app.auth.login');
+            return view('login');
         }
         return redirect('/');
     }

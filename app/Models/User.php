@@ -26,6 +26,9 @@ class User extends Authenticatable
         'mobile_number',
         'type',
         'password',
+        'patient_id',
+        'staff_id',
+        'is_active',
     ];
 
     /**
