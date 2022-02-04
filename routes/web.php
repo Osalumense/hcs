@@ -31,6 +31,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/counsellors/fetch', [HomeController::class, 'displayCounsellors']);
         Route::get('/counsellors', [HomeController::class, 'renderCounsellorsPage']);
         Route::get('/users', [HomeController::class, 'renderUsersPage']);
+        Route::get('/users/fetch', [HomeController::class, 'displayUsers']);
+        Route::post('/counsellor/delete/{id}', [HomeController::class, 'deleteCounsellor']);
+        Route::get('/counsellor/edit/{id}', [HomeController::class, 'editCounsellor']);
         
     });
 });

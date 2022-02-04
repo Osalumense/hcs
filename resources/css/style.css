@@ -208,11 +208,16 @@ li {
 	background-color: var(--primary-light);
 }
 
-.navbar .nav-item .nav-link {
+.navbar .nav-item .nav-link, .nav-pills .nav-link {
 	color: #eee;
 	text-decoration: none;
 	vertical-align: middle;
 	transition: all 0.2s ease;
+}
+
+.nav-pills .nav-link .active {
+	color: #ffffff;
+	background-color: #00dabf !important;
 }
 
 .navbar .fa-stack {
