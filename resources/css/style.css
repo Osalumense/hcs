@@ -76,6 +76,7 @@ li {
 .services,
 .work,
 .contact,
+.dashboard,
 .testimonial,
 .footer {
   	background-color: var(--primary);
@@ -208,7 +209,7 @@ li {
 	background-color: var(--primary-light);
 }
 
-.navbar .nav-item .nav-link, .nav-pills .nav-link {
+.navbar .nav-item .nav-link {
 	color: #eee;
 	text-decoration: none;
 	vertical-align: middle;

@@ -27,34 +27,37 @@ function scrollFunction() {
 }
 
 // NAVBAR ON MOBILE
-let elements = document.querySelectorAll(".nav-link:not(.dropdown-toggle)");
+const showMenu = () => {
+    document.querySelector(".offcanvas-collapse").classList.toggle("open");
+//     let elements = document.querySelector(".offcanvas-collapse");
 
-for (let i = 0; i < elements.length; i++) {
-    elements[i].addEventListener("click", () => {
-        document.querySelector(".offcanvas-collapse").classList.toggle("open");
-    });
+//     for (let i = 0; i < elements.length; i++) {
+//         elements[i].addEventListener("click", () => {
+//             document.querySelector(".offcanvas-collapse").classList.toggle("open");
+//         });
+//     }
 }
-
-document.querySelector(".navbar-toggler").addEventListener("click", () => {
-  document.querySelector(".offcanvas-collapse").classList.toggle("open");
-});
+// 
+// document.querySelector(".navbar-toggler").addEventListener("click", () => {
+//   document.querySelector(".offcanvas-collapse").classList.toggle("open");
+// });
 
 // HOVER ON DESKTOP
-function toggleDropdown(e) {
-    const _d = e.target.closest(".dropdown");
-    let _m = document.querySelector(".dropdown-menu", _d);
+// function toggleDropdown(e) {
+//     const _d = e.target.closest(".dropdown");
+//     let _m = document.querySelector(".dropdown-menu", _d);
 
-    setTimeout(
-        function () {
-        const shouldOpen = _d.matches(":hover");
-        _m.classList.toggle("show", shouldOpen);
-        _d.classList.toggle("show", shouldOpen);
+//     setTimeout(
+//         function () {
+//         const shouldOpen = _d.matches(":hover");
+//         _m.classList.toggle("show", shouldOpen);
+//         _d.classList.toggle("show", shouldOpen);
 
-        _d.setAttribute("aria-expanded", shouldOpen);
-        },
-        e.type === "mouseleave" ? 300 : 0
-    );
-}
+//         _d.setAttribute("aria-expanded", shouldOpen);
+//         },
+//         e.type === "mouseleave" ? 300 : 0
+//     );
+// }
 
 // ON HOVER
 const dropdownCheck = document.querySelector(".dropdown");

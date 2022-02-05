@@ -7,11 +7,11 @@
         <!-- Text Logo - Use this if you don't have a graphic logo -->
         <a class="navbar-brand logo-text" href="{{url('/')}}">HCS</a>
 
-        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+        <button class="navbar-toggler p-0 border-0" onclick="showMenu()" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" >
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ms-auto navbar-nav-scroll">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>

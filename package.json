@@ -25,6 +25,9 @@
     "dependencies": {
         "alpinejs": "^3.8.1",
         "aos": "^2.3.4",
-        "jquery": "^3.6.0"
+        "jquery": "^3.6.0",
+        "laravel-echo": "^1.11.3",
+        "pusher": "^5.0.1",
+        "pusher-js": "^7.0.6"
     }
 }
