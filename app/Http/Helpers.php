@@ -1,6 +1,7 @@
 <?php
 
 use Vinkla\Hashids\Facades\Hashids;
+use App\Models\User;
 
 /**
  * Get Decoded ID
@@ -18,4 +19,19 @@ function getDecodedId($encodedId)
     }
 
     return $id;
+}
+
+
+/**
+ * Get Decoded ID
+ *
+ *
+ * @return array
+ */
+function getCounsellors()
+{
+    $counsellors = User::where('type', '=', (string)\UserType::COUNSELLOR)
+    ->orderBy('id', 'DESC')->get();
+
+    return $counsellors;
 }

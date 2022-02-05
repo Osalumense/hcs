@@ -16,12 +16,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/', [PageController::class, 'index']);
-Route::get('/adm', [PageController::class, 'Admex']);
 
 
 
