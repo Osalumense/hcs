@@ -32,7 +32,7 @@ class MessagesController extends Controller
         $authData = json_encode([
             'user_id' => Auth::user()->id,
             'user_info' => [
-                'name' => Auth::user()->first_name
+                'name' => Auth::user()->name
             ]
         ]);
         // check if user authorized
@@ -255,6 +255,8 @@ class MessagesController extends Controller
     public function getContacts(Request $request)
     {
         // get all users that received/sent message from/to [Auth user]
+        $counsellors = User::where('type', '=', (string)\UserType::COUNSELLOR)
+        ->orderBy('id', 'DESC');
         $users = Message::join('users',  function ($join) {
             $join->on('ch_messages.from_id', '=', 'users.id')
                 ->orOn('ch_messages.to_id', '=', 'users.id');
@@ -278,6 +280,7 @@ class MessagesController extends Controller
             }
         }else{
             $contacts = '<p class="message-hint center-el"><span>Your contact list is empty</span></p>';
+            $contacts = $counsellors;
         }
 
         return Response::json([
