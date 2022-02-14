@@ -12,7 +12,7 @@ It is still a work in progress...
 ![HCS login](https://user-images.githubusercontent.com/43953425/151820612-0ee91bec-5d00-408e-984a-940e617898fd.PNG)
 
 
-#### Steps to run in local machine
+## Steps to run in local machine
 - Clone the repository
 - cd into project directory
 - Copy .env.example to .env
