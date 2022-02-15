@@ -26,14 +26,14 @@
                     @if (Auth::user())
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button class="btn p-2 btn-reverse" type="submit">Logout</button>
+                            <button class="p-2 btn-reverse" type="submit">Logout</button>
                         </form>
                     @else
                             <a class="nav-link" href="{{url('/login')}}">Login</a>
                         
                         </li>
                         <li class="nav-item">
-                            <a class="btn" href="{{url('/register')}}">Get Started</a>
+                            <a class="btn-reverse" href="{{url('/register')}}">Get Started</a>
                         </li>
                     @endif
             </ul>

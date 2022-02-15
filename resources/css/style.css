@@ -331,10 +331,7 @@ li {
 	color: white;
 	border-radius: 0;
 	background-image: none;
-	padding: 10px 30px;
 	border: 2px solid var(--secondary);
-	box-shadow: 5px 5px 0px 0px var(--secondary);
-	transform: translate(5px, 5px);
 }
 
 .form-link {

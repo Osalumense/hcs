@@ -32,7 +32,7 @@ class MessagesController extends Controller
         $authData = json_encode([
             'user_id' => Auth::user()->id,
             'user_info' => [
-                'name' => Auth::user()->name
+                'name' => Auth::user()->first_name
             ]
         ]);
         // check if user authorized
@@ -254,9 +254,8 @@ class MessagesController extends Controller
      */
     public function getContacts(Request $request)
     {
+        dd($request);
         // get all users that received/sent message from/to [Auth user]
-        $counsellors = User::where('type', '=', (string)\UserType::COUNSELLOR)
-        ->orderBy('id', 'DESC');
         $users = Message::join('users',  function ($join) {
             $join->on('ch_messages.from_id', '=', 'users.id')
                 ->orOn('ch_messages.to_id', '=', 'users.id');
@@ -280,7 +279,6 @@ class MessagesController extends Controller
             }
         }else{
             $contacts = '<p class="message-hint center-el"><span>Your contact list is empty</span></p>';
-            $contacts = $counsellors;
         }
 
         return Response::json([
@@ -376,7 +374,7 @@ class MessagesController extends Controller
         $getRecords = null;
         $input = trim(filter_var($request['input'], FILTER_SANITIZE_STRING));
         $records = User::where('id','!=',Auth::user()->id)
-                    ->where('name', 'LIKE', "%{$input}%")
+                    ->where('first_name', 'LIKE', "%{$input}%")
                     ->paginate($request->per_page ?? $this->perPage);
         foreach ($records->items() as $record) {
             $getRecords .= view('Chatify::layouts.listItem', [

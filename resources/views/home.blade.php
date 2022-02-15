@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div> --}}
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-md-4">
                 <div class="card m-2">
                     <div class="card-header">{{ __('Navigation') }}</div>
