@@ -30,7 +30,7 @@ class MessagesController extends Controller
         $authData = json_encode([
             'user_id' => Auth::user()->id,
             'user_info' => [
-                'name' => Auth::user()->name
+                'name' => Auth::user()->first_name
             ]
         ]);
         // check if user authorized
@@ -292,7 +292,7 @@ class MessagesController extends Controller
     {
         $input = trim(filter_var($request['input'], FILTER_SANITIZE_STRING));
         $records = User::where('id','!=',Auth::user()->id)
-                    ->where('name', 'LIKE', "%{$input}%")
+                    ->where('first_name', 'LIKE', "%{$input}%")
                     ->paginate($request->per_page ?? $this->perPage);
         return Response::json([
             'records' => $records->items(),

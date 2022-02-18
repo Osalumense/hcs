@@ -83,7 +83,6 @@ class MessagesController extends Controller
 
         // User data
         if ($request['type'] == 'user') {
-            dd($request);
             $fetch = User::where('id', $request['id'])->first();
             if($fetch){
                 $userAvatar = asset('/storage/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar);
@@ -187,7 +186,7 @@ class MessagesController extends Controller
         return Response::json([
             'status' => '200',
             'error' => $error,
-            'message' => Chatify::messageCard(@$messageData),
+            'message' => Chatify::messageCard($messageData),
             'tempID' => $request['temporaryMsgId'],
         ]);
     }
@@ -225,6 +224,9 @@ class MessagesController extends Controller
             $allMessages .= Chatify::messageCard(
                 Chatify::fetchMessage($message->id)
             );
+        }
+        if (Auth::user()->type == \UserType::USER) {
+            $response['messages'] .= '';
         }
         $response['messages'] = $allMessages;
         return Response::json($response);
@@ -370,7 +372,7 @@ class MessagesController extends Controller
      */
     public function search(Request $request)
     {
-        dd($request['input']);
+        // dd($request['input']);
         $getRecords = null;
         $input = trim(filter_var($request['input'], FILTER_SANITIZE_STRING));
         $records = User::where('id','!=',Auth::user()->id)
