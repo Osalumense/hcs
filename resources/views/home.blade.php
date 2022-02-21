@@ -39,6 +39,15 @@
             </div>
         </div> --}}
         <div class="row mt-5">
+            <div class="d-flex justify-content-end">
+                @if (Auth::user()->type == (UserType::USER))
+                    <a class="btn-reverse text-center mb-3" href="{{ url('/chatify')}}">Chat with a Counsellor</a>
+                @else
+                    <a class="btn-reverse text-center mb-3" href="{{ url('/chatify')}}">View Chats</a>
+                @endif
+                
+            </div>
+            
             <div class="col-md-4">
                 <div class="card m-2">
                     <div class="card-header">{{ __('Navigation') }}</div>
