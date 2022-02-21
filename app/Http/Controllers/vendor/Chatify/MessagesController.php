@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Str;
-
+use UserType;
 
 class MessagesController extends Controller
 {
@@ -279,6 +279,14 @@ class MessagesController extends Controller
             foreach ($usersList as $user) {
                 $contacts .= Chatify::getContactItem($user);
             }
+        }elseif(Auth::user()->type == UserType::USER){
+            $contacts = '';
+            $data = User::where('type', '=', (string)\UserType::COUNSELLOR)
+            ->orderBy('id', 'DESC');
+            foreach ($data as $counsellor) {
+                $contacts = Chatify::getContactItem($counsellor);
+            }
+            // $contacts = "Show counsellors here";
         }else{
             $contacts = '<p class="message-hint center-el"><span>Your contact list is empty</span></p>';
         }
@@ -361,6 +369,16 @@ class MessagesController extends Controller
             'favorites' => $favorites->count() > 0
                 ? $favoritesList
                 : 0,
+        ], 200);
+    }
+
+    public function showCounsellors()
+    {
+        $counsellors = null;
+        $counsellor = User::where('type', '=', (string)\UserType::USER)
+        ->orderBy('id', 'DESC');
+        return Response::json([
+            $counsellors => $counsellor,
         ], 200);
     }
 

@@ -19,47 +19,55 @@
 
 {{-- -------------------- All users/group list -------------------- --}}
 @if($get == 'users')
-<table class="messenger-list-item" data-contact="{{ $user->id }}">
-    <tr data-action="0">
-        {{-- Avatar side --}}
-        <td style="position: relative">
-            @if($user->active_status)
-                <span class="activeStatus"></span>
-            @endif
-        <div class="avatar av-m"
-        style="background-image: url('{{ asset('/storage/'.config('chatify.user_avatar.folder').'/'.$user->avatar) }}');">
-        </div>
-        </td>
-        {{-- center side --}}
-        <td>
-        <p data-id="{{ $user->id }}" data-type="user">
-            {{ strlen($user->first_name) > 12 ? trim(substr($user->first_name,0,12)).'..' : $user->first_name }}
-            <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
-        <span>
-            {{-- Last Message user indicator --}}
-            {!!
-                $lastMessage->from_id == Auth::user()->id
-                ? '<span class="lastMessageIndicator">You :</span>'
-                : ''
-            !!}
-            {{-- Last message body --}}
-            @if($lastMessage->attachment == null)
-            {{
-                strlen($lastMessage->body) > 30
-                ? trim(substr($lastMessage->body, 0, 30)).'..'
-                : $lastMessage->body
-            }}
-            @else
-            <span class="fas fa-file"></span> Attachment
-            @endif
-        </span>
-        {{-- New messages counter --}}
-            {!! $unseenCounter > 0 ? "<b>".$unseenCounter."</b>" : '' !!}
-        </td>
+    <table class="messenger-list-item" data-contact="{{ $user->id }}">
+        <tr data-action="0">
+            {{-- Avatar side --}}
+            <td style="position: relative">
+                @if($user->active_status)
+                    <span class="activeStatus"></span>
+                @endif
+            <div class="avatar av-m"
+            style="background-image: url('{{ asset('/storage/'.config('chatify.user_avatar.folder').'/'.$user->avatar) }}');">
+            </div>
+            </td>
+            {{-- center side --}}
+            <td>
+            <p data-id="{{ $user->id }}" data-type="user">
+                {{ strlen($user->first_name) > 12 ? trim(substr($user->first_name,0,12)).'..' : $user->first_name }}
+                <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
+            <span>
+                {{-- Last Message user indicator --}}
+                {!!
+                    $lastMessage->from_id == Auth::user()->id
+                    ? '<span class="lastMessageIndicator">You :</span>'
+                    : ''
+                !!}
+                {{-- Last message body --}}
+                @if($lastMessage->attachment == null)
+                {{
+                    strlen($lastMessage->body) > 30
+                    ? trim(substr($lastMessage->body, 0, 30)).'..'
+                    : $lastMessage->body
+                }}
+                @else
+                <span class="fas fa-file"></span> Attachment
+                @endif
+            </span>
+            {{-- New messages counter --}}
+                {!! $unseenCounter > 0 ? "<b>".$unseenCounter."</b>" : '' !!}
+            </td>
 
-    </tr>
-</table>
+        </tr>    
+    </table>
 @endif
+
+@if(Auth::user()->type == UserType::USER)
+    <table class="messenger-list-item" data-contact="{{ Auth::user()->id }}">
+        <tr data-action="0">{{ Auth::user()->id }}</tr>
+    </table>    
+@endif
+
+
 
 {{-- -------------------- Search Item -------------------- --}}
 @if($get == 'search_item')
