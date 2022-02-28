@@ -39,7 +39,7 @@
               <div class="flex items-center justify-between p-2">
                 <!-- Navbar left -->
                 <div class="flex items-center space-x-3">
-                  <span class="p-2 text-xl font-semibold tracking-wider uppercase lg:hidden">K-WD</span>
+                  <span class="p-2 text-xl font-semibold tracking-wider uppercase lg:hidden">HCS Dashboard</span>
                   <!-- Toggle sidebar button -->
                   <button @click="toggleSidbarMenu()" class="p-2 rounded-md focus:outline-none focus:ring">
                     <svg
@@ -107,8 +107,8 @@
                       class="absolute mt-1 transform -translate-x-full bg-white rounded-md shadow-lg min-w-max"
                     >
                       <div class="flex flex-col p-4 space-y-1 font-medium border-b">
-                        <span class="text-gray-800">User</span>
-                        <span class="text-sm text-gray-400">ahmed.kamel@example.com</span>
+                        <span class="text-gray-800">{{ (Auth::user()->last_name) }} {{ (Auth::user()->first_name) }}</span>
+                        <span class="text-sm text-gray-400">{{ (Auth::user()->email) }}</span>
                       </div>
                       <div class="flex items-center justify-center hover:bg-gray-100 text-red-600 p-2 border-t">
                         <form method="POST" action="{{ route('logout') }}">

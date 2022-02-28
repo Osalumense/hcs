@@ -49,4 +49,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * returns user by ID.
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public static function get($id)
+    {
+        return User::find($id);
+    }
+    
+    /**
+     * Add/update user.
+     *
+     * @throws \Exception
+    */
+    public function edit()
+    {
+        $postData = request()->except(['id']);
+        unset($postData['_token']);
+        $this->forceFill($postData);
+        $this->save();
+    }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 use Vinkla\Hashids\Facades\Hashids;
 
@@ -122,5 +124,37 @@ class HomeController extends Controller
         // $id = getDecodedId($encodedId);
         $user = User::FindOrFail($id);
         return view('admin.counsellor.counsellor-edit')->with(['user' => $user]);
+    }
+
+    public function updateCounsellors(Request $request)
+    {
+        $postData = request()->all();
+        $user = Auth::user();
+        if ($user instanceof User && $user->type != \UserType::USER) {
+            $validators = Validator::make($request->input(), [
+                'first_name' => 'required|string|max:30',
+                'last_name' => 'required|string|max:30',
+                'mobile_number' => 'bail|numeric|digits_between:11,12',
+                'gender' => 'required|numeric',
+                'is_active' => 'required|numeric',
+            ]);
+            if ($validators->fails()) {
+                return redirect()->back()->withErrors($validators)->withInput();
+            }
+             /** @var User $getUser */
+             $getUser = User::get($postData['id']);
+             $getUser->first_name = $postData['first_name'];
+             $getUser->last_name = $postData['last_name'];
+             $getUser->mobile_number = $postData['mobile_number'];
+             $getUser->gender = $postData['gender'];
+             $getUser->is_active = $postData['is_active'];
+             $getUser->save();
+     
+             return redirect('/')->with('success', 'User updated successfully');  
+        } else {
+            \session()->flash('error', 'User not authenticated');
+            return redirect()->back();
+        }
+        
     }
 }
