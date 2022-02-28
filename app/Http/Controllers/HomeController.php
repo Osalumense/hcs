@@ -51,7 +51,7 @@ class HomeController extends Controller
             return $user->last_name.' '.$user->first_name;
         })
         ->addColumn('action', function ($user) {
-            return view('admin.partials.admin_user_action')->with([
+            return view('admin.partials.admin_counsellor_action')->with([
                 'user' => $user,
             ]);
         })
@@ -67,28 +67,28 @@ class HomeController extends Controller
         return view('admin.users');
     }
 
-    public function displayUsers()
-    {
-        $data = User::where('type', '=', (string)\UserType::USER)
-        ->orderBy('id', 'DESC');
-        return Datatables::of($data)
-        ->editColumn('is_active', function ($user) {
-            return \ActiveStatus::getValueInHtml($user->is_active);
-        })
-        ->addColumn('name', function($user){
-            return $user->last_name.' '.$user->first_name;
-        })
-        ->addColumn('action', function ($user) {
-            return view('admin.partials.admin_user_action')->with([
-                'user' => $user,
-            ]);
-        })
-        // ->editColumn('created_at', function ($user) {
-        //     return $user->created_at->format('d/m/Y');
-        // })
-        ->rawColumns(['action', 'is_active'])
-        ->make(true);
-    }
+    // public function displayUsers()
+    // {
+    //     $data = User::where('type', '=', (string)\UserType::USER)
+    //     ->orderBy('id', 'DESC');
+    //     return Datatables::of($data)
+    //     ->editColumn('is_active', function ($user) {
+    //         return \ActiveStatus::getValueInHtml($user->is_active);
+    //     })
+    //     ->addColumn('name', function($user){
+    //         return $user->last_name.' '.$user->first_name;
+    //     })
+    //     ->addColumn('action', function ($user) {
+    //         return view('admin.partials.admin_user_action')->with([
+    //             'user' => $user,
+    //         ]);
+    //     })
+    //     // ->editColumn('created_at', function ($user) {
+    //     //     return $user->created_at->format('d/m/Y');
+    //     // })
+    //     ->rawColumns(['action', 'is_active'])
+    //     ->make(true);
+    // }
 
     /**
      * Delete Counsellor.
@@ -99,8 +99,8 @@ class HomeController extends Controller
      */
     public function deleteCounsellor($id)
     {
-        $decodedId = getDecodedId($id);
-        $user = User::findOrFail($decodedId);
+        $user = $id;
+        // $user = User::findOrFail($decodedId);
         if ($user->type == \UserType::COUNSELLOR) {
             $user->delete();
             \session()->flash('success', 'Counsellor deleted');
@@ -118,8 +118,8 @@ class HomeController extends Controller
     */
     public function editCounsellor(Request $request)
     {
-        $encodedId = $request->segment(4);
-        $id = getDecodedId($encodedId);
+        $id = $request->segment(4);
+        // $id = getDecodedId($encodedId);
         $user = User::FindOrFail($id);
         return view('admin.counsellor.counsellor-edit')->with(['user' => $user]);
     }
