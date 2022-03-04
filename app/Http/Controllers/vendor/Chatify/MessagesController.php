@@ -256,7 +256,6 @@ class MessagesController extends Controller
      */
     public function getContacts(Request $request)
     {
-        dd($request);
         // get all users that received/sent message from/to [Auth user]
         $users = Message::join('users',  function ($join) {
             $join->on('ch_messages.from_id', '=', 'users.id')
@@ -271,7 +270,6 @@ class MessagesController extends Controller
         ->orderBy('max_created_at', 'desc')
         ->groupBy('users.id')
         ->paginate($request->per_page ?? $this->perPage);
-
         $usersList =$users->items();
 
         if (count($usersList) > 0) {
@@ -279,22 +277,25 @@ class MessagesController extends Controller
             foreach ($usersList as $user) {
                 $contacts .= Chatify::getContactItem($user);
             }
-        }elseif(Auth::user()->type == UserType::USER){
-            $contacts = '';
-            $data = User::where('type', '=', (string)\UserType::COUNSELLOR)
-            ->orderBy('id', 'DESC');
-            foreach ($data as $counsellor) {
-                $contacts = Chatify::getContactItem($counsellor);
-            }
-            // $contacts = "Show counsellors here";
-        }else{
+        }
+        // elseif(Auth::user()->type == UserType::USER){
+        //     $contacts = '';
+            
+        //     foreach ($data as $counsellor) {
+        //         $contacts = Chatify::getContactItem($counsellor);
+        //     }
+        //     $contacts = "Show counsellors here";
+        // }
+        else{
             $contacts = '<p class="message-hint center-el"><span>Your contact list is empty</span></p>';
         }
+        $counsellors = User::where('type', '=', (string)\UserType::COUNSELLOR)->orderBy('id', 'DESC')->get();
 
         return Response::json([
             'contacts' => $contacts,
             'total' => $users->total() ?? 0,
             'last_page' => $users->lastPage() ?? 1,
+            'counsellors' => $counsellors
         ], 200);
     }
 

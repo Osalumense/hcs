@@ -61,11 +61,7 @@
     </table>
 @endif
 
-@if(Auth::user()->type == UserType::USER)
-    <table class="messenger-list-item" data-contact="{{ Auth::user()->id }}">
-        <tr data-action="0">{{ Auth::user()->id }}</tr>
-    </table>    
-@endif
+
 
 
 

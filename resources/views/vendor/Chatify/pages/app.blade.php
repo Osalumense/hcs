@@ -37,9 +37,21 @@
                {{-- Saved Messages --}}
                {!! view('Chatify::layouts.listItem', ['get' => 'saved']) !!}
 
+
+               <h4>Contacts</h4>
+               <div class="listOfContacts">
+            </div>
+
+               <h4>All Counsellors</h4>
+               {!! view('Chatify::layouts.showCounsellors') !!}
                {{-- Contact --}}
-               <div class="listOfContacts" style="width: 100%;height: calc(100% - 200px);position: relative;">
-                </div>
+
+              
+               {{-- <div class="listOfContacts" style="width: 100%;height: calc(100% - 200px);position: relative;">
+                </div> --}}
+
+               
+                
 
            </div>
 

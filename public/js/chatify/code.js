@@ -796,6 +796,8 @@ function getContacts() {
         } else {
           $(".listOfContacts").append(data.contacts);
         }
+        console.log(data.counsellors);
+        populateCounsellors(data.counsellors);
         updateSelectedContact();
         // update data-action required with [responsive design]
         cssMediaQueries();
@@ -808,6 +810,17 @@ function getContacts() {
         console.error(error);
       },
     });
+  }
+}
+
+function populateCounsellors(counsellor) 
+{
+  let url = window.location.protocol + "//" + window.location.host;
+  for( let i = 0; i < counsellor.length; i++) {
+     const text =  '<table class="messenger-list-item" data-contact="' + counsellor[i].id + ' "><tr data-action="0"><td><div class="avatar av-m" style="background-image: url(\'' + url +'/storage/users-avatar/' + counsellor[i].avatar +'\');"></div></td><td><p data-id=" ' + counsellor[i].id + ' "data-type="user"> ' + counsellor[i].first_name + ' </td></tr></table>';
+      let listCounsellors = $("body").find('.counsellorList');
+      listCounsellors.append(text);
+      console.log(text, url);
   }
 }
 
@@ -1110,6 +1123,9 @@ $(document).ready(function () {
 
   // get contacts list
   getFavoritesList();
+
+  //get Counsellors list
+
 
   // Clear typing timeout
   clearTimeout(typingTimeout);
