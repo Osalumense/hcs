@@ -326,6 +326,39 @@ li {
 	box-shadow: none;
 	border-radius: 0;
 	padding: 10px 30px;
+	position: relative;
+}
+
+.btn-reverse .badge {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	padding: 7px 10px;
+	border-radius: 50%;
+	background: var(--secondary);
+	color: white;
+	box-shadow: 0px 0px 1px 1px #ffffff;
+	/* animation: pulse 1.4s infinite ease-out; */
+  }
+
+.pulse {
+	animation: pulse-animation 2s infinite;
+}
+  
+@keyframes pulse-animation {
+	0% {
+		box-shadow: 0 0 0 0px rgba(243, 243, 243, 0.5);
+	}
+	100% {
+		box-shadow: 0 0 0 15px rgba(243, 243, 243, 0);
+	}
+}
+
+@keyframes pulse {
+    to {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
 }
 
 .btn-reverse:hover {

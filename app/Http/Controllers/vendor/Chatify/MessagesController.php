@@ -232,6 +232,16 @@ class MessagesController extends Controller
         return Response::json($response);
     }
 
+    public function getCountOfUnreadMessages($id)
+    {
+       $unreadMessages =  DB::table('ch_messages')
+        ->where([
+            ['to_id', '=', $id],
+            ['seen', '=', 0],
+        ])->count();
+       return $unreadMessages;
+    }
+
     /**
      * Make messages as seen
      *

@@ -38,12 +38,17 @@
                {!! view('Chatify::layouts.listItem', ['get' => 'saved']) !!}
 
 
-               <h4>Contacts</h4>
+               <h4 class="head-text">Contacts</h4>
                <div class="listOfContacts">
             </div>
 
-               <h4>All Counsellors</h4>
-               {!! view('Chatify::layouts.showCounsellors') !!}
+            @if(Auth::user()->type == \UserType::USER)
+                <hr>
+                <h4 class="head-text">All Counsellors</h4>
+                {!! view('Chatify::layouts.showCounsellors') !!}
+            @endif
+
+               
                {{-- Contact --}}
 
               

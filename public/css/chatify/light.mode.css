@@ -94,6 +94,11 @@
     background-color: #eee;
 }
 
+.head-text {
+    color: #4a4a4a;
+    margin: .5rem 0 .5rem .5rem;
+}
+
 /*
 ***********************************************
 * Placeholder loading

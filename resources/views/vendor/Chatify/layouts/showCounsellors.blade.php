@@ -3,7 +3,7 @@
     $user = Auth::user();
 @endphp
 
-@if($user->type == \UserType::USER)
+
     {{-- <table class="messenger-list-item" data-contact="{{ $user->id }}">
         <tr data-action="0">
             <td>
@@ -21,9 +21,3 @@
     <div class="counsellorList">
 
     </div>
-@endif
-
-<script type="text/html">
-    let juls;
-    console.log(juls);
-</script>

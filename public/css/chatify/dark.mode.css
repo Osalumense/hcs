@@ -91,6 +91,13 @@
 .avatar {
     background-color: #323232;
 }
+
+
+.head-text {
+    color: #f3f3f3;
+    margin: .5rem 0 .5rem .5rem;    
+}
+
 /*
 ***********************************************
 * Placeholder loading

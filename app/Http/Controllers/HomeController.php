@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\vendor\Chatify\MessagesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 use Vinkla\Hashids\Facades\Hashids;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -28,7 +31,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $unreadMessages = MessagesController::getCountOfUnreadMessages(Auth::user()->id);
+        return view('home')->with('unreadMsg', $unreadMessages);
     }
 
     public function adminIndex()

@@ -8,42 +8,20 @@
 @section('content')
 <section class="dashboard d-flex py-5">
     <div class="container mt-4">
-        {{-- <div class="row justify-content-center mt-5">
-            <div class="col-lg-3 mb-5">
-                <div class="card">
-                    <div class="card-header">{{ __('Navigation') }}</div>
-
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('You are logged in!') }}
-
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button class="btn p-2 btn-reverse" type="submit">Logout</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
         <div class="row mt-5">
             <div class="d-flex justify-content-end">
                 @if (Auth::user()->type == (UserType::USER))
-                    <a class="btn-reverse text-center mb-3" href="{{ url('/chatify')}}">Chat with a Counsellor</a>
+                    <a class="btn-reverse text-center mb-3" href="{{ url('/chatify')}}">Chat with a Counsellor
+                    @if ($unreadMsg != 0)
+                        <span class="badge pulse">{{$unreadMsg}}</span>
+                    @endif
+                    </a>
                 @else
-                    <a class="btn-reverse text-center mb-3" href="{{ url('/chatify')}}">View Chats</a>
+                    <a class="btn-reverse text-center mb-3" href="{{ url('/chatify')}}">View Chats
+                    @if ($unreadMsg != 0)
+                        <span class="badge pulse">{{$unreadMsg}}</span>
+                    @endif
+                    </a>
                 @endif
                 
             </div>
