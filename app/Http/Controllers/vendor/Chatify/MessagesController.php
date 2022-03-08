@@ -65,7 +65,6 @@ class MessagesController extends Controller
             'type' => $type ?? 'user',
             'messengerColor' => Auth::user()->messenger_color ?? $this->messengerFallbackColor,
             'dark_mode' => Auth::user()->dark_mode < 1 ? 'light' : 'dark',
-            'counsellors' => getCounsellors()
         ]);
     }
 
@@ -288,24 +287,14 @@ class MessagesController extends Controller
                 $contacts .= Chatify::getContactItem($user);
             }
         }
-        // elseif(Auth::user()->type == UserType::USER){
-        //     $contacts = '';
-            
-        //     foreach ($data as $counsellor) {
-        //         $contacts = Chatify::getContactItem($counsellor);
-        //     }
-        //     $contacts = "Show counsellors here";
-        // }
         else{
             $contacts = '<p class="message-hint center-el"><span>Your contact list is empty</span></p>';
         }
-        $counsellors = User::where('type', '=', (string)\UserType::COUNSELLOR)->orderBy('id', 'DESC')->get();
 
         return Response::json([
             'contacts' => $contacts,
             'total' => $users->total() ?? 0,
             'last_page' => $users->lastPage() ?? 1,
-            'counsellors' => $counsellors
         ], 200);
     }
 
