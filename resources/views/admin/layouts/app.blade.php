@@ -184,24 +184,6 @@
             </main>
 
             <!-- Main footer -->
-            {{-- <footer class="flex items-center justify-between flex-shrink-0 p-4 border-t max-h-14">
-              <div>HCS &copy; <?=date('Y')?></div>
-              
-              <div>
-                <!-- Github svg -->
-                <div class="text-sm">
-                    Made by
-                    <a
-                      class="text-blue-500 hover:bg-gray-200 p-1 rounded"
-                      href="https://github.com/Osalumense"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Stephen</a
-                    >
-                  </div>
-              </div>
-            </footer> --}}
-    
           {{-- <!-- Setting panel button -->
           <div>
             <button
