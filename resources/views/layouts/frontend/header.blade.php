@@ -1,10 +1,7 @@
 <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-dark" aria-label="Main navigation">
     <div class="container">
 
-        <!-- Image Logo -->
-        <!-- <a class="navbar-brand logo-image" href="index.html"><img src="images/logo.svg" alt="alternative"></a> -->
-
-        <!-- Text Logo - Use this if you don't have a graphic logo -->
+    
         <a class="navbar-brand logo-text" href="{{url('/')}}">HCS</a>
 
         <button class="navbar-toggler p-0 border-0" onclick="showMenu()" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
