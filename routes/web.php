@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/users/fetch', [HomeController::class, 'displayUsers']);
         Route::get('/counsellor/edit/{id}', [HomeController::class, 'editCounsellor']);
         Route::get('/user/edit/{id}', [HomeController::class, 'editCounsellor']);
+        Route::get('/user/view/{id}', [HomeController::class, 'viewUser']);
         Route::post('/counsellor/update', [HomeController::class,'updateCounsellors']);
         Route::post('/counsellor/delete/{id}', [HomeController::class, 'deleteCounsellor']);
         Route::post('/user/delete/{id}', [HomeController::class, 'deleteCounsellor']);        

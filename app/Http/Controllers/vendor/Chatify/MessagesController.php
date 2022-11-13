@@ -231,7 +231,7 @@ class MessagesController extends Controller
         return Response::json($response);
     }
 
-    public function getCountOfUnreadMessages($id)
+    public static function getCountOfUnreadMessages($id)
     {
        $unreadMessages =  DB::table('ch_messages')
         ->where([

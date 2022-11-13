@@ -74,4 +74,19 @@ class User extends Authenticatable
         $this->forceFill($postData);
         $this->save();
     }
+
+    public static function usersCount()
+    {
+        return User::where('type', '=', ''.\UserType::USER.'')->count();
+    }
+
+    public static function counsellorsCount()
+    {
+        return User::where('type', '=', ''.\UserType::COUNSELLOR.'')->count();
+    }
+
+    public static function totalUsersCount()
+    {
+        return User::count();
+    }
 }

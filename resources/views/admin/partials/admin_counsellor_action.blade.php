@@ -1,4 +1,4 @@
-<a href="{{url('/admin/counsellor/edit/' .$user->id)}}" class=" p-2 rounded-md bg-blue-600 text-white text-md">
+<a href="{{url('/admin/counsellor/edit/' .$user->id)}}" class=" p-2 rounded-md bg-indigo-600 text-white text-md">
     <span class="inline-flex"><i class="bx bxs-edit mr-1"></i></span>
     Edit
 </a>

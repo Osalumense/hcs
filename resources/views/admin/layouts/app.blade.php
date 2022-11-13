@@ -60,7 +60,7 @@
     
                   <div class="items-center hidden space-x-3 md:flex">
                     <!-- Notification Button -->
-                    <div class="relative" x-data="{ isOpen: false }">
+                    {{-- <div class="relative" x-data="{ isOpen: false }">
                       <!-- red dot -->
                       <div class="absolute right-0 p-1 bg-red-400 rounded-full animate-ping"></div>
                       <div class="absolute right-0 p-1 bg-red-400 border rounded-full"></div>
@@ -72,24 +72,8 @@
                       </button>
     
                       <!-- Dropdown card -->
-                      <div
-                        @click.away="isOpen = false"
-                        x-show.transition.opacity="isOpen"
-                        class="absolute w-48 max-w-md mt-3 transform bg-white rounded-md shadow-lg -translate-x-3/4 min-w-max"
-                      >
-                        <div class="p-4 font-medium border-b">
-                          <span class="text-gray-800">Notification</span>
-                        </div>
-                        <ul class="flex flex-col p-2 my-2 space-y-1">
-                          <li>
-                            <a href="#" class="block px-2 py-1 transition rounded-md hover:bg-gray-100">Link</a>
-                          </li>
-                          <li>
-                            <a href="#" class="block px-2 py-1 transition rounded-md hover:bg-gray-100">Another Link</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                      
+                    </div> --}}
     
                   </div>
     
@@ -104,7 +88,7 @@
                     <div
                       @click.away="isOpen = false"
                       x-show.transition.opacity="isOpen"
-                      class="absolute mt-1 transform -translate-x-full bg-white rounded-md shadow-lg min-w-max"
+                      class="absolute mt-1 transform -translate-x-full bg-white rounded-md shadow-lg min-w-max z-[99]"
                     >
                       <div class="flex flex-col p-4 space-y-1 font-medium border-b">
                         <span class="text-gray-800">{{ (Auth::user()->last_name) }} {{ (Auth::user()->first_name) }}</span>

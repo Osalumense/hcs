@@ -11,7 +11,11 @@
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ms-auto navbar-nav-scroll">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
+                    @if (Auth::user())
+                        <a class="nav-link active" aria-current="page" href="{{url('/home')}}">Home</a>
+                    @else
+                        <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
+                    @endif
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/')}}">About</a>

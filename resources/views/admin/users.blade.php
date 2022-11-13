@@ -25,18 +25,6 @@
                     scope="col"
                     class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-500 uppercase"
                 >
-                    Mobile Number
-                </th>
-                <th
-                    scope="col"
-                    class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-500 uppercase"
-                >
-                    Date Created
-                </th>
-                <th
-                    scope="col"
-                    class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-500 uppercase"
-                >
                     Status
                 </th>
                 <th scope="col" class="relative px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-500 uppercase">
@@ -66,8 +54,6 @@
             columns: [
                 {data: 'name', name: 'name'},
                 {data: 'email', name: 'email'},
-                {data: 'mobile_number', name: 'mobile_number', orderable: false},
-                {data: 'created_at', name: 'created_at', orderable: false},
                 {data: 'is_active', name: 'is_active', orderable: false},
                 {data: 'action', name: 'action', orderable: false},
             ],

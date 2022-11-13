@@ -53,13 +53,14 @@
                             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                 <p>Welcome to HCS, select the "Chat with counsellor" button <span><i class="ml-2 fa-solid fa-arrow-turn-up"></i></span> to begin your counselling sessions with your preferred therapist. </p> 
                             </div>
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Loremipsum dolor dfjfidfngdd gdjgdgdfsd as asasaklas oiiufhrihsfhsf ujisnfshfuifhs 
-                                <table>
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                {{-- <table>
                                     <tr>
                                         <td>Full Name:</td>
                                         <td><h5>{{Auth::user()->last_name}} {{Auth::user()->first_name}}</h5></td>
                                     </tr>
-                                </table>
+                                </table> --}}
+                                <h3>User Profile</h3>
                                 <form class="form-horizontal mt-3" action="#"
                                 method="POST" enctype="multipart/form-data" id="parsleyForm">
                                 @csrf
@@ -88,6 +89,27 @@
                                         @if ($errors->has('last_name'))
                                             <div class="text-danger">{{ $errors->first('last_name') }}</div>
                                         @endif
+                                    </div>
+                                </div>
+                                <div class="row my-4">
+                                    <div class="form-group col-sm-6">
+                                        <label for="gender"
+                                            class="required">Gender</label>
+                                        <select class="w-11/12 focus:outline-none focus:text-gray-600 p-2 form-control form-control-md" name="gender" required>
+                                            @foreach (Gender::getAll() as $key => $value)
+                                              <option value="{{$key}}" {{ ( $key == $user->gender) ? 'selected' : '' }}>{{$value}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-sm-6">
+                                        <label for="phone_number"
+                                            class="required">Phone Number</label>
+                                        <div class="input-group {{ $errors->has('phone_number') ? 'has-error' : '' }}">
+                                            <input type="text" name="phone_number" class="form-control form-control" id="phone_number"
+                                                placeholder="Phone Number" value="{{old('phone_number',Auth::user()->mobile_number)}}" required
+                                                data-parsley-validate-name autocomplete="{dydx}">
+                                        </div>
                                     </div>
                                 </div>
                             </form>
