@@ -2,9 +2,7 @@
 @php
     $user = Auth::user();
 @endphp
-
-
-    {{-- <table class="messenger-list-item" data-contact="{{ $user->id }}">
+    <table class="messenger-list-item" data-contact="{{ $user->id }}">
         <tr data-action="0">
             <td>
             <div class="avatar av-m"
@@ -17,7 +15,7 @@
             </td>
 
         </tr>
-    </table>    --}}
+    </table>
     <div class="counsellorList">
-
+        {{-- {{getCounsellors()}} --}}
     </div>

@@ -108,59 +108,59 @@
             <!-- Main content -->
             <main class="flex-1 max-h-full p-5 overflow-hidden overflow-y-scroll">
               @if (session('success'))
-                    <div class="flex justify-center">
-                        <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 7000)"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 transform scale-0"
-                            x-transition:enter-end="opacity-100 transform scale-100"
-                            x-transition:leave="transition ease-in duration-300"
-                            x-transition:leave-start="opacity-100 transform scale-100"
-                            x-transition:leave-end="opacity-0 transform scale-0"
-                            class="bg-green-200 text-green-800 px-4 py-2 rounded-md text-lg flex items-center mx-auto w-3/4 xl:w-2/4">
-                            <span class=" mx-auto"><i class='bx bxs-check-circle mr-2'></i>
-                                {!! session('success') !!} </span>
-                        </div>
-                    </div>
-                @endif
-                @if (session('error'))
-                    <div class="flex justify-center">
-                        <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 7000)"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 transform scale-0"
-                            x-transition:enter-end="opacity-100 transform scale-100"
-                            x-transition:leave="transition ease-in duration-300"
-                            x-transition:leave-start="opacity-100 transform scale-100"
-                            x-transition:leave-end="opacity-0 transform scale-0"
-                            class="bg-red-200 text-red-800 px-4 py-2 rounded-md text-lg flex items-center mx-auto w-3/4 xl:w-2/4">
-                            <span class=" mx-auto"><i class='bx bxs-x-circle mr-2'></i> {!! session('error') !!}
-                            </span>
-                        </div>
-                    </div>
-                @endif
-                @if (session('warning'))
-                    <div class="flex justify-center">
-                        <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 7000)"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 transform scale-0"
-                            x-transition:enter-end="opacity-100 transform scale-100"
-                            x-transition:leave="transition ease-in duration-300"
-                            x-transition:leave-start="opacity-100 transform scale-100"
-                            x-transition:leave-end="opacity-0 transform scale-0"
-                            class="bg-orange-200 text-yellow-600 px-4 py-2 rounded-md text-lg flex items-center mx-auto w-3/4 xl:w-2/4">
-                            <span class="mx-auto"><i class='bx bxs-error mr-2'></i>{!! session('warning') !!}
-                            </span>
-                        </div>
-                    </div>
-                @endif
-                @if (session('info'))
-                    <div class="flex justify-center">
-                        <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 7000)"
-                            class="bg-blue-200 text-blue-600 px-4 py-2 rounded-md text-lg flex items-center mx-auto w-3/4 xl:w-2/4">
-                            <span class="mx-auto"><i class='bx bxs-error mr-2'></i> {!! session('info') !!}
-                            </span>
-                        </div>
-                    </div>
-                @endif
+                  <div class="flex justify-center">
+                      <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 7000)"
+                          x-transition:enter="transition ease-out duration-300"
+                          x-transition:enter-start="opacity-0 transform scale-0"
+                          x-transition:enter-end="opacity-100 transform scale-100"
+                          x-transition:leave="transition ease-in duration-300"
+                          x-transition:leave-start="opacity-100 transform scale-100"
+                          x-transition:leave-end="opacity-0 transform scale-0"
+                          class="bg-green-200 text-green-800 px-4 py-2 rounded-md text-lg flex items-center mx-auto w-3/4 xl:w-2/4">
+                          <span class=" mx-auto"><i class='bx bxs-check-circle mr-2'></i>
+                              {!! session('success') !!} </span>
+                      </div>
+                  </div>
+              @endif
+              @if (session('error'))
+                  <div class="flex justify-center">
+                      <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 7000)"
+                          x-transition:enter="transition ease-out duration-300"
+                          x-transition:enter-start="opacity-0 transform scale-0"
+                          x-transition:enter-end="opacity-100 transform scale-100"
+                          x-transition:leave="transition ease-in duration-300"
+                          x-transition:leave-start="opacity-100 transform scale-100"
+                          x-transition:leave-end="opacity-0 transform scale-0"
+                          class="bg-red-200 text-red-800 px-4 py-2 rounded-md text-lg flex items-center mx-auto w-3/4 xl:w-2/4">
+                          <span class=" mx-auto"><i class='bx bxs-x-circle mr-2'></i> {!! session('error') !!}
+                          </span>
+                      </div>
+                  </div>
+              @endif
+              @if (session('warning'))
+                  <div class="flex justify-center">
+                      <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 7000)"
+                          x-transition:enter="transition ease-out duration-300"
+                          x-transition:enter-start="opacity-0 transform scale-0"
+                          x-transition:enter-end="opacity-100 transform scale-100"
+                          x-transition:leave="transition ease-in duration-300"
+                          x-transition:leave-start="opacity-100 transform scale-100"
+                          x-transition:leave-end="opacity-0 transform scale-0"
+                          class="bg-orange-200 text-yellow-600 px-4 py-2 rounded-md text-lg flex items-center mx-auto w-3/4 xl:w-2/4">
+                          <span class="mx-auto"><i class='bx bxs-error mr-2'></i>{!! session('warning') !!}
+                          </span>
+                      </div>
+                  </div>
+              @endif
+              @if (session('info'))
+                  <div class="flex justify-center">
+                      <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 7000)"
+                          class="bg-blue-200 text-blue-600 px-4 py-2 rounded-md text-lg flex items-center mx-auto w-3/4 xl:w-2/4">
+                          <span class="mx-auto"><i class='bx bxs-error mr-2'></i> {!! session('info') !!}
+                          </span>
+                      </div>
+                  </div>
+              @endif
               @yield('content')
 
 

@@ -8,9 +8,7 @@ use App\Http\Controllers\vendor\Chatify\MessagesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
-use Vinkla\Hashids\Facades\Hashids;
-use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -177,5 +175,35 @@ class HomeController extends Controller
             return redirect()->back();
         }
         
+    }
+
+    public function updateUser(Request $request)
+    {
+        $id = $request->segment(3);
+        $user = User::FindOrFail($id);
+        $user->edit();
+        \session()->flash('success', 'User updated');
+        return redirect()->back();
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'old_password'=>'required|min:6|max:100',
+            'new_password'=>'required|min:6|max:100',
+            'confirm_password'=>'required|same:new_password'
+        ]);
+        $id = $request->segment(3);
+        $user = User::FindOrFail($id);
+        if(Hash::check($request->old_password,$user->password)){
+            $user->update([
+                'password'=>bcrypt($request->new_password)
+            ]);
+            return redirect()->back()->with('success', 'Password updated');
+        }
+        else {
+            return redirect()->back()->with('error', 'Old password does not match current password');
+        }
+
     }
 }

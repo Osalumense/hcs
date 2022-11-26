@@ -33,8 +33,8 @@
                             <div class="nav flex-column nav-pills mb-3 bg-opacity-50 mx-3 p-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 
                                 <button class="btn-inverse active mb-3" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
-                                <button class="btn-inverse" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
-                                {{-- <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button> --}}
+                                <button class="btn-inverse mb-3" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+                                <button class="btn-inverse" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Update Password</button>
                             </div>
                         </div>
                 </div>
@@ -54,14 +54,8 @@
                                 <p>Welcome to HCS, select the "Chat with counsellor" button <span><i class="ml-2 fa-solid fa-arrow-turn-up"></i></span> to begin your counselling sessions with your preferred therapist. </p> 
                             </div>
                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                {{-- <table>
-                                    <tr>
-                                        <td>Full Name:</td>
-                                        <td><h5>{{Auth::user()->last_name}} {{Auth::user()->first_name}}</h5></td>
-                                    </tr>
-                                </table> --}}
                                 <h3>User Profile</h3>
-                                <form class="form-horizontal mt-3" action="#"
+                            <form class="form-horizontal mt-3" action="{{url('/user/update/'.Auth::user()->id)}}"
                                 method="POST" enctype="multipart/form-data" id="parsleyForm">
                                 @csrf
                                 <div class="row">
@@ -103,19 +97,74 @@
                                     </div>
 
                                     <div class="form-group col-sm-6">
-                                        <label for="phone_number"
+                                        <label for="mobile_number"
                                             class="required">Phone Number</label>
-                                        <div class="input-group {{ $errors->has('phone_number') ? 'has-error' : '' }}">
-                                            <input type="text" name="phone_number" class="form-control form-control" id="phone_number"
-                                                placeholder="Phone Number" value="{{old('phone_number',Auth::user()->mobile_number)}}" required
+                                        <div class="input-group {{ $errors->has('mobile_number') ? 'has-error' : '' }}">
+                                            <input type="text" name="mobile_number" class="form-control form-control" id="mobile_number"
+                                                placeholder="Phone Number" value="{{old('mobile_number',Auth::user()->mobile_number)}}" required
                                                 data-parsley-validate-name autocomplete="{dydx}">
                                         </div>
+                                    </div>
+
+                                    <div class="py-5 d-flex justify-items-center">
+                                        <button class="btn-inverse" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Update</button>
                                     </div>
                                 </div>
                             </form>
                                 
                             </div>
-                            {{-- <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Loremipsum dolor dfjfidfngdd gdjgdgdfsd as asasaklas oiiufhrihsfhsf ujisnfshfuifhs </div> --}}
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                <h3>Update password</h3>
+                                <form class="form-horizontal mt-3" action="{{url('/user/update-password/'.Auth::user()->id)}}"
+                                    method="POST" enctype="multipart/form-data" id="parsleyUpdateForm">
+                                    @csrf
+                                    <div class="row mb-3">
+                                        <div class="form-group">
+                                            <label for="old_password"
+                                                class="required">Current Password</label>
+                                            <div class="input-group {{ $errors->has('old_password') ? 'has-error' : '' }}">
+                                                <input type="text" name="old_password" class="form-control form-control" id="old_password"
+                                                    placeholder="Current Password" required
+                                                    data-parsley-validate-name autocomplete="{dydx}">
+                                            </div>
+                                            @if ($errors->has('old_password'))
+                                                <div class="text-danger">{{ $errors->first('old_password') }}</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="form-group">
+                                            <label for="new_password"
+                                                class="">New Password</label>
+                                            <div class="input-group {{ $errors->has('new_password') ? 'has-error' : '' }}">
+                                                <input type="text" name="new_password" class="form-control form-control" id="new_password"
+                                                    placeholder="New Password"
+                                                    data-parsley-validate-name autocomplete="off" required>
+                                            </div>
+                                            @if ($errors->has('new_password'))
+                                                <div class="text-danger">{{ $errors->first('new_password') }}</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="form-group">
+                                            <label for="confirm_password"
+                                                class="">Confirm Password</label>
+                                            <div class="input-group {{ $errors->has('confirm_password') ? 'has-error' : '' }}">
+                                                <input type="text" name="confirm_password" class="form-control form-control" id="confirm_password"
+                                                    placeholder="New Password"
+                                                    data-parsley-validate-name autocomplete="off" required>
+                                            </div>
+                                            @if ($errors->has('confirm_password'))
+                                                <div class="text-danger">{{ $errors->first('confirm_password') }}</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="py-4 d-flex justify-items-center">
+                                        <button class="btn-inverse" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Update</button>
+                                    </div>
+                                </form>    
+                            </div>
                         </div>
                     </div>
                 </div>

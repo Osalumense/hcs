@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', [PageController::class, 'index']);
-
-
+Route::post('/user/update/{id}', [HomeController::class, 'updateUser']);
+Route::post('/user/update-password/{id}', [HomeController::class, 'updatePassword']);
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => ['admin-auth']], function () {
