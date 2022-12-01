@@ -169,7 +169,7 @@ class HomeController extends Controller
              $getUser->is_active = $postData['is_active'];
              $getUser->save();
      
-             return redirect('/')->with('success', 'User updated successfully');  
+             return redirect()->back()->with('success', 'User updated successfully');  
         } else {
             \session()->flash('error', 'User not authenticated');
             return redirect()->back();
@@ -204,6 +204,28 @@ class HomeController extends Controller
         else {
             return redirect()->back()->with('error', 'Old password does not match current password');
         }
+    }
 
+    public function renderAddCounsellorsPage()
+    {
+        return view('admin.counsellor.add-counsellor');
+    }
+ 
+    public function addCounsellor(Request $request)
+    {
+        $validators = Validator::make($request->input(), [
+            'email' => 'required|email',
+            'first_name' => 'required|string|max:30',
+            'last_name' => 'required|string|max:30',
+            'mobile_number' => 'bail|numeric|digits_between:11,12',
+            'gender' => 'required|numeric',
+            'staff_id' => 'required|string',
+        ]);
+        if ($validators->fails()) {
+            return redirect()->back()->withErrors($validators)->withInput();
+        }
+        $user = new User();
+        $user->edit();
+        return redirect()->back()->with('success', 'Counsellor added');
     }
 }

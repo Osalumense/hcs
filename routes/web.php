@@ -26,11 +26,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/', [HomeController::class, 'Adminindex']);
         Route::get('/counsellors/fetch', [HomeController::class, 'displayCounsellors']);
         Route::get('/counsellors', [HomeController::class, 'renderCounsellorsPage']);
+        Route::get('/counsellors/add', [HomeController::class, 'renderAddCounsellorsPage']);
         Route::get('/users', [HomeController::class, 'renderUsersPage']);
         Route::get('/users/fetch', [HomeController::class, 'displayUsers']);
         Route::get('/counsellor/edit/{id}', [HomeController::class, 'editCounsellor']);
         Route::get('/user/edit/{id}', [HomeController::class, 'editCounsellor']);
         Route::get('/user/view/{id}', [HomeController::class, 'viewUser']);
+        Route::post('/counsellors/add', [HomeController::class, 'addCounsellor']);
         Route::post('/counsellor/update', [HomeController::class,'updateCounsellors']);
         Route::post('/counsellor/delete/{id}', [HomeController::class, 'deleteCounsellor']);
         Route::post('/user/delete/{id}', [HomeController::class, 'deleteCounsellor']);        

@@ -510,9 +510,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .m-0 {
   margin: 0px;
 }
-.m-5 {
-  margin: 1.25rem;
-}
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -696,6 +693,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-6 {
   width: 1.5rem;
+}
+.w-2\/5 {
+  width: 40%;
 }
 .w-1\/2 {
   width: 50%;
@@ -964,13 +964,17 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
-.bg-violet-400 {
+.bg-indigo-500 {
   --tw-bg-opacity: 1;
-  background-color: rgb(167 139 250 / var(--tw-bg-opacity));
+  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
 }
 .bg-indigo-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(129 140 248 / var(--tw-bg-opacity));
+}
+.bg-violet-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(167 139 250 / var(--tw-bg-opacity));
 }
 .bg-red-500 {
   --tw-bg-opacity: 1;
@@ -1336,13 +1340,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:overflow-y-scroll:hover {
   overflow-y: scroll;
 }
-.hover\:bg-violet-500:hover {
+.hover\:bg-indigo-600:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(139 92 246 / var(--tw-bg-opacity));
+  background-color: rgb(79 70 229 / var(--tw-bg-opacity));
 }
 .hover\:bg-indigo-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+}
+.hover\:bg-violet-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(139 92 246 / var(--tw-bg-opacity));
 }
 .hover\:bg-red-600:hover {
   --tw-bg-opacity: 1;

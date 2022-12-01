@@ -1,6 +1,9 @@
 @extends('admin.layouts.app')
 
 @section('content')
+    <a href="{{url("admin/counsellors/add")}}" class="bg-indigo-500 hover:bg-indigo-600 relative shadow-xl rounded-md p-2 mb-12 lg:mb-3 text-gray-100">
+        Add Counsellor
+    </a>
     <h3 class="mt-6 text-3xl">Counsellors</h3>
     <div class="flex flex-col mt-6">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
