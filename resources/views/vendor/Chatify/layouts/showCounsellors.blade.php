@@ -18,4 +18,5 @@
     </table>
     <div class="counsellorList">
         {{-- {{getCounsellors()}} --}}
+        
     </div>
