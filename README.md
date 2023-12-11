@@ -11,6 +11,10 @@ It is still a work in progress...
 #### Login page
 ![HCS login](https://user-images.githubusercontent.com/43953425/151820612-0ee91bec-5d00-408e-984a-940e617898fd.PNG)
 
+#### Chat with Counsellor
+![HCS User Chat]([https://user-images.githubusercontent.com/43953425/151820612-0ee91bec-5d00-408e-984a-940e617898fd.PNG](https://github.com/Osalumense/hcs/assets/43953425/b9c1cac0-6c2a-4bad-bcc7-c9c3c311f326))
+
+
 
 ## Steps to run in local machine
 - Clone the repository
